@@ -1,99 +1,33 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GreenFlow Studio | AI 景观设计系统</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<title>GreenFlow Studio · AI 景观设计平台</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-left">
-            <img src="./public/logo.png" class="logo" alt="GreenFlow Studio Logo" />
-            <span class="brand-text">GreenFlow Studio</span>
-        </div>
-        <div class="nav-right">
-            <button class="nav-btn" onclick="scrollToSection('proposalSection')">AI 报价生成</button>
-            <button class="nav-btn" onclick="scrollToSection('imageSection')">AI 效果图</button>
-            <button class="nav-btn" onclick="exportPdf()">导出 PDF</button>
-        </div>
-    </nav>
+<header>
+  <img src="public/logo.png" class="logo">
+  <h1>GreenFlow Studio · AI 景观设计平台</h1>
+</header>
 
-    <header class="hero">
-        <h1>GreenFlow Studio · AI 景观设计工作台</h1>
-        <p>让每一位园艺设计师拥有 AI 级别的生产力</p>
-        <div class="hero-badges">
-            <span>🌿 本地计算 · 零数据上传</span>
-            <span>📊 智能物料与报价引擎</span>
-            <span>🖼 AI 场景效果图生成</span>
-            <span>📄 专业 PDF 提案自动导出</span>
-        </div>
-    </header>
+<section>
+  <h2>AI 景观设计报告生成</h2>
+  <label>项目类型：</label>
+  <select id="type">
+    <option>住宅庭院改造</option>
+  </select><br><br>
 
-    <section id="proposalSection" class="section">
-        <h2>🎨 AI 景观设计报价生成</h2>
-        <p class="section-subtitle">输入基本信息 · 自动生成完整方案</p>
-        <div class="input-grid">
-            <div class="input-group">
-                <label>项目类型</label>
-                <select id="projectType">
-                    <option value="residential">住宅庭院改造</option>
-                    <option value="commercial">商业景观</option>
-                    <option value="maintenance">花园维护</option>
-                    <option value="new_construction">新建项目</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <label>花园面积（平方英尺）</label>
-                <input type="number" id="gardenSize" value="800" />
-            </div>
-            <div class="input-group">
-                <label>设计风格</label>
-                <select id="designStyle">
-                    <option value="modern">现代简约</option>
-                    <option value="english">英式自然</option>
-                    <option value="japanese">日式禅意</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <label>预算类型</label>
-                <select id="clientBudget">
-                    <option value="standard">标准型</option>
-                    <option value="economy">经济型</option>
-                    <option value="premium">高端型</option>
-                    <option value="luxury">豪华型</option>
-                </select>
-            </div>
-        </div>
+  <label>花园面积（平方英尺）：</label>
+  <input id="size" value="800"><br><br>
 
-        <div class="input-group">
-            <label>项目描述</label>
-            <textarea id="projectDescription" rows="3">客户希望打造一个低维护、现代风格的后院花园。</textarea>
-        </div>
+  <button onclick="generate()">生成效果图（4张）</button>
 
-        <button class="primary-btn" onclick="generateLandscapeProposal()">🚀 生成项目方案</button>
-        <div id="resultContainer" class="result-container"></div>
-    </section>
+  <div id="results"></div>
 
-    <section id="imageSection" class="section">
-        <h2>🖼 AI 景观效果图生成（4 张）</h2>
-        <p class="section-subtitle">基于你的设计参数，AI 自动生成景观效果图</p>
-        <button class="primary-btn" onclick="generateAIImages()">🌿 生成 AI 效果图（4 张）</button>
-        <div id="imageGallery" class="image-gallery"></div>
-    </section>
+  <button onclick="downloadPDF()">导出 PDF</button>
+</section>
 
-    <section id="pdfSection" class="section">
-        <h2>📄 导出专业 PDF 提案</h2>
-        <button class="primary-btn" onclick="exportPdf()">📄 导出 PDF</button>
-    </section>
-
-    <footer class="footer">
-        © 2024 GreenFlow Studio · All Rights Reserved
-    </footer>
-
-    <script src="./script.js"></script>
-    <script src="./ai-image.js"></script>
-    <script src="./pdf.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

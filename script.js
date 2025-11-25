@@ -1,1 +1,2 @@
-/* script.js content from previous message */
+function generate(){const box=document.getElementById('results');box.innerHTML='';for(let i=0;i<4;i++){let img=document.createElement('img');img.src='https://placehold.co/800x600?text=AI+Image+'+(i+1);box.appendChild(img);} }
+function downloadPDF(){alert('PDF 导出示范版');}
